@@ -2,7 +2,7 @@ import 'package:firedart/firestore/firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tuckshopmanager/model/inventoryModel.dart';
-import 'package:tuckshopmanager/pages/vendor_management_page.dart';
+import 'package:tuckshopmanager/pages/supplier_management_page.dart';
 import 'package:tuckshopmanager/utils/appbar_actions_menu.dart';
 import 'package:tuckshopmanager/widget/drawer_menu_widget.dart';
 

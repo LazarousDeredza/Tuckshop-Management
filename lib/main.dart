@@ -10,7 +10,7 @@ import 'package:tuckshopmanager/pages/login_page.dart';
 import 'package:tuckshopmanager/pages/purchasePage.dart';
 import 'package:tuckshopmanager/pages/salesPage.dart';
 import 'package:tuckshopmanager/pages/user_management_page.dart';
-import 'package:tuckshopmanager/pages/vendor_management_page.dart';
+import 'package:tuckshopmanager/pages/supplier_management_page.dart';
 import 'package:tuckshopmanager/utils/data.dart';
 import 'package:tuckshopmanager/utils/routes.dart';
 

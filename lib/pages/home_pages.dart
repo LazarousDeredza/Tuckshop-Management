@@ -734,7 +734,7 @@ class _HomePage extends State<HomePage> {
         break;
       case 3:
         icon = CupertinoIcons.cart_badge_minus;
-        label = "Total Sells";
+        label = "Total Sales";
         count = totalSales;
         break;
       case 4:
@@ -749,7 +749,7 @@ class _HomePage extends State<HomePage> {
         break;
       case 6:
         icon = CupertinoIcons.money_dollar_circle_fill;
-        label = "Total Sell Amount";
+        label = "Total Sales Amount";
         count = totalSellAmount;
         break;
       case 7:
@@ -772,8 +772,16 @@ class _HomePage extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white12),
+                  child: Icon(icon, size: 60), // Reduced icon size for mobile
+                ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   "+$count",
@@ -782,13 +790,7 @@ class _HomePage extends State<HomePage> {
                       fontWeight: FontWeight.w900,
                       color: Colors.black),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white12),
-                  child: Icon(icon, size: 30), // Reduced icon size for mobile
-                )
+                
               ],
             ),
             const SizedBox(height: 10), // Reduced spacing for mobile

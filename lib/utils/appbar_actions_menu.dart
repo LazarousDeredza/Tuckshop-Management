@@ -54,7 +54,7 @@ class AppbarActionMenu {
             Navigator.pushReplacementNamed(context, MyRoutes.vendorManagementRoute);
           },
           child: const Text(
-            "Vendor",
+            "Supplier",
             style: TextStyle(
                color: Colors.white,
                 fontSize: 15,

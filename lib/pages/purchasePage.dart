@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:tuckshopmanager/pages/vendor_management_page.dart';
+import 'package:tuckshopmanager/pages/supplier_management_page.dart';
 import 'package:tuckshopmanager/utils/appbar_actions_menu.dart';
 import 'package:tuckshopmanager/widget/drawer_menu_widget.dart';
 
@@ -552,7 +552,7 @@ class _PurchasePage extends State<PurchasePage> {
 
                                               setState(() {
                                                 log("<< Item >>");
-                                                
+
                                                 log(item.toString());
                                                 selectedVendor =
                                                     item as VendorDataModel?;
