@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "262696171187",
+    "project_id": "tuckshop-ffea9",
+    "storage_bucket": "tuckshop-ffea9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262696171187:android:20dc8a49d3ec2a3b85a2c6",
+        "android_client_info": {
+          "package_name": "com.example.tuckshopmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN26PUaFd0b2RWix3gPAXjH3KtiN4nbCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
