@@ -62,496 +62,133 @@
 //               style: TextStyle(
 //                   color: Colors.white,
 //                   fontWeight: FontWeight.bold,
-//                   fontSize: 40),
+//                   fontSize: 30), // Reduced font size for better fit on mobile
 //             ),
 //           ),
 //         ),
-//         Container(
-//           padding: const EdgeInsets.all(20),
-//           color: Colors.white,
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             children: [
-//               SizedBox(
-//                 height: MediaQuery.of(context).size.height * .50,
-//                 child: GridView(
-//                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//                       mainAxisExtent: 200,
-//                       crossAxisCount: 4,
-//                       mainAxisSpacing: 30,
-//                       crossAxisSpacing: 30),
-//                   children: [
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               width: 100,
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$shelf",
-//                                             style: const TextStyle(
-//                                                 fontSize: 20,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons.cube_box_fill,
-//                                                 size: 20),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total Shelf's",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
+//         Expanded(
+//           child: Container(
+//             padding: const EdgeInsets.all(10), // Reduced padding for mobile
+//             color: Colors.white,
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               children: [
+//                 Expanded(
+//                   child: GridView.builder(
+//                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                       crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2, // Adaptive columns
+//                       mainAxisSpacing: 10, // Reduced spacing for mobile
+//                       crossAxisSpacing: 10,
+//                       childAspectRatio: MediaQuery.of(context).size.width > 600 ? 1 : 0.75, // Adjusted aspect ratio
 //                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$supplier",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons.group_solid,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Suppliers",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$customer",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons.person_solid,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total Buyers",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$totalSales",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons.cart_badge_minus,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total Sells",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$numberOfPurchase",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons.cart_badge_plus,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Number of Purchase",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$totalPurchaseAmount",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons
-//                                                     .money_dollar_circle,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total Purchase Amount",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$totalSellAmount",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons
-//                                                     .money_dollar_circle_fill,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total sell Amount",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       color: Colors.white,
-//                       child: Card(
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(20)),
-//                         elevation: 5,
-//                         child: Column(
-//                           children: <Widget>[
-//                             Container(
-//                               padding: const EdgeInsets.all(20),
-//                               child: Column(
-//                                   // mainAxisAlignment: MainAxisAlignment.center,
-//                                   children: [
-//                                     Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Text(
-//                                             "+$totalProfitAmount",
-//                                             style: const TextStyle(
-//                                                 fontSize: 50,
-//                                                 fontWeight: FontWeight.w900,
-//                                                 color: Colors.black),
-//                                           ),
-//                                           Container(
-//                                             padding: const EdgeInsets.all(10),
-//                                             decoration: BoxDecoration(
-//                                                 borderRadius:
-//                                                     BorderRadius.circular(50),
-//                                                 color: Colors.white12),
-//                                             child: const Icon(
-//                                                 CupertinoIcons
-//                                                     .bag_fill_badge_plus,
-//                                                 size: 50),
-//                                           )
-//                                         ]),
-//                                     const SizedBox(
-//                                       height: 30,
-//                                     ),
-//                                     const Text(
-//                                       "Total Profit",
-//                                       style: TextStyle(
-//                                           fontSize: 20, color: Colors.black),
-//                                     )
-//                                   ]),
-//                             )
-//                           ],
-//                         ),
-//                       ),
-//                     )
-//                   ],
+//                     itemCount: 8, // Number of grid items
+//                     itemBuilder: (context, index) {
+//                       return _buildGridItem(index);
+//                     },
+//                   ),
 //                 ),
-//               ),
-//               // Container(
-//               //   child: Column(
-//               //     crossAxisAlignment: CrossAxisAlignment.start,
-//               //     mainAxisAlignment: MainAxisAlignment.start,
-//               //     children: [
-//               //       Container(
-//               //         margin: const EdgeInsets.only(bottom: 20),
-//               //         child: const Text(
-//               //           "LOW STOCK ITEM LIST",
-//               //           style: TextStyle(
-//               //               color: Colors.blueAccent,
-//               //               fontWeight: FontWeight.w900,
-//               //               fontSize: 30),
-//               //         ),
-//               //       ),
-//               //       Container(
-//               //         padding: const EdgeInsets.all(25),
-//               //         decoration: const BoxDecoration(
-//               //             color: Colors.blueGrey,
-//               //             borderRadius: BorderRadius.only(
-//               //                 topLeft: Radius.circular(15),
-//               //                 topRight: Radius.circular(15))),
-//               //         child: Row(
-//               //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               //           children: const [
-//               //             Text(
-//               //               "Product Name",
-//               //               style: TextStyle(
-//               //                   color: Colors.white,
-//               //                   fontSize: 20,
-//               //                   fontWeight: FontWeight.bold),
-//               //             ),
-//               //             Text(
-//               //               "Model Number",
-//               //               style: TextStyle(
-//               //                   color: Colors.white,
-//               //                   fontSize: 20,
-//               //                   fontWeight: FontWeight.bold),
-//               //             ),
-//               //             Text(
-//               //               "Total Quality",
-//               //               style: TextStyle(
-//               //                   color: Colors.white,
-//               //                   fontSize: 20,
-//               //                   fontWeight: FontWeight.bold),
-//               //             ),
-//               //             Text(
-//               //               "Selling Price",
-//               //               style: TextStyle(
-//               //                   color: Colors.white,
-//               //                   fontSize: 20,
-//               //                   fontWeight: FontWeight.bold),
-//               //             ),
-//               //             Text(
-//               //               "Buying Price",
-//               //               style: TextStyle(
-//               //                   color: Colors.white,
-//               //                   fontSize: 20,
-//               //                   fontWeight: FontWeight.bold),
-//               //             ),
-//               //           ],
-//               //         ),
-//               //       )
-//               //     ],
-//               //   ),
-//               // )
-//             ],
+//               ],
+//             ),
 //           ),
 //         )
 //       ]),
 //       drawer: const DrawerMenuWidget(),
+//     );
+//   }
+
+//   Widget _buildGridItem(int index) {
+//     IconData icon;
+//     String label;
+//     int count;
+
+//     switch (index) {
+//       case 0:
+//         icon = CupertinoIcons.cube_box_fill;
+//         label = "Total Shelf's";
+//         count = shelf;
+//         break;
+//       case 1:
+//         icon = CupertinoIcons.group_solid;
+//         label = "Suppliers";
+//         count = supplier;
+//         break;
+//       case 2:
+//         icon = CupertinoIcons.person_solid;
+//         label = "Total Buyers";
+//         count = customer;
+//         break;
+//       case 3:
+//         icon = CupertinoIcons.cart_badge_minus;
+//         label = "Total Sales";
+//         count = totalSales;
+//         break;
+//       case 4:
+//         icon = CupertinoIcons.cart_badge_plus;
+//         label = "Number of Purchase";
+//         count = numberOfPurchase;
+//         break;
+//       case 5:
+//         icon = CupertinoIcons.money_dollar_circle;
+//         label = "Total Purchase Amount";
+//         count = totalPurchaseAmount;
+//         break;
+//       case 6:
+//         icon = CupertinoIcons.money_dollar_circle_fill;
+//         label = "Total Sales Amount";
+//         count = totalSellAmount;
+//         break;
+//       case 7:
+//         icon = CupertinoIcons.bag_fill_badge_plus;
+//         label = "Total Profit";
+//         count = totalProfitAmount;
+//         break;
+//       default:
+//         icon = CupertinoIcons.question;
+//         label = "Unknown";
+//         count = 0;
+//         break;
+//     }
+
+//     return Card(
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+//       elevation: 5,
+//       child: Padding(
+//         padding: const EdgeInsets.all(10),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Container(
+//                   padding: const EdgeInsets.all(10),
+//                   decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(50),
+//                       color: Colors.white12),
+//                   child: Icon(icon, size: 60), // Reduced icon size for mobile
+//                 ),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               crossAxisAlignment: CrossAxisAlignment.center,
+//               children: [
+//                 Text(
+//                   "+$count",
+//                   style: const TextStyle(
+//                       fontSize: 30, // Reduced font size for mobile
+//                       fontWeight: FontWeight.w900,
+//                       color: Colors.black),
+//                 ),
+                
+//               ],
+//             ),
+//             const SizedBox(height: 10), // Reduced spacing for mobile
+//             Text(
+//               label,
+//               style: const TextStyle(
+//                   fontSize: 16, // Reduced font size for mobile
+//                   color: Colors.black),
+//             )
+//           ],
+//         ),
+//       ),
 //     );
 //   }
 
@@ -606,10 +243,6 @@
 //     }
 //   }
 // }
-
-
-
-
 
 
 import 'package:firedart/firestore/firestore.dart';
@@ -773,12 +406,13 @@ class _HomePage extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white12),
-                  child: Icon(icon, size: 60), // Reduced icon size for mobile
-                ),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.white12,
+              ),
+              child: Icon(icon, size: 60), // Reduced icon size for mobile
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -790,7 +424,6 @@ class _HomePage extends State<HomePage> {
                       fontWeight: FontWeight.w900,
                       color: Colors.black),
                 ),
-                
               ],
             ),
             const SizedBox(height: 10), // Reduced spacing for mobile
@@ -819,41 +452,51 @@ class _HomePage extends State<HomePage> {
 
     //inventory
     var map = await Firestore.instance.collection("inventory").get();
-    setState(() {
-      numberOfPurchase = map.length;
-    });
-    for (var element in map) {
+    if (mounted) {
       setState(() {
-        shelf += element["quantity"] as int;
-        totalPurchaseAmount +=
-            int.parse(element["unitPrice"]) * element["quantity"] as int;
+        numberOfPurchase = map.length;
       });
+    }
+    for (var element in map) {
+      if (mounted) {
+        setState(() {
+          shelf += element["quantity"] as int;
+          totalPurchaseAmount += int.parse(element["unitPrice"]) * element["quantity"] as int;
+        });
+      }
     }
 
     //customer
     var map2 = await Firestore.instance.collection("customer").get();
-    setState(() {
-      customer = map2.length;
-    });
+    if (mounted) {
+      setState(() {
+        customer = map2.length;
+      });
+    }
 
     //supplier
     var map3 = await Firestore.instance.collection("vendors").get();
-    setState(() {
-      supplier = map3.length;
-    });
+    if (mounted) {
+      setState(() {
+        supplier = map3.length;
+      });
+    }
 
     //sales
     var map4 = await Firestore.instance.collection("sales").get();
-    setState(() {
-      totalSales = map4.length;
-    });
+    if (mounted) {
+      setState(() {
+        totalSales = map4.length;
+      });
+    }
 
     for (var element in map4) {
-      setState(() {
-        totalProfitAmount += element["profit"] * element["quantity"] as int;
-        totalSellAmount +=
-            int.parse(element["unit_price"]) * element["quantity"] as int;
-      });
+      if (mounted) {
+        setState(() {
+          totalProfitAmount += element["profit"] * element["quantity"] as int;
+          totalSellAmount += int.parse(element["unit_price"]) * element["quantity"] as int;
+        });
+      }
     }
   }
 }

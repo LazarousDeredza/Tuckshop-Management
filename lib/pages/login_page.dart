@@ -19,6 +19,16 @@
 //   String _userName = "";
 //   String _userPass = "";
 
+//   @override
+//   void initState() {
+//     super.initState();
+//   }
+
+//   @override
+//   void dispose() {
+//     super.dispose();
+//   }
+
 //   moveToHome(BuildContext context) async {
 //     if (_formKey.currentState!.validate()) {
 //       var map = await Firestore.instance.collection("users").get();
@@ -33,14 +43,24 @@
 //             SavedData.email = element[DataKey.email];
 //             SavedData.userId = element[DataKey.userId];
 //             SavedData.documentId = element.id;
-//             setState(() {
-//               _changeButton = true;
-//             });
+
+//             if (mounted) {
+//               setState(() {
+//                 _changeButton = true;
+//               });
+//             }
+
 //             await Future.delayed(Duration(seconds: 1));
-//             await Navigator.pushReplacementNamed(context, MyRoutes.homeRoute);
-//             setState(() {
-//               _changeButton = false;
-//             });
+
+//             if (mounted) {
+//               setState(() {
+//                 _changeButton = false;
+//               });
+//             }
+//             if (mounted) {
+//               await Navigator.pushReplacementNamed(context, MyRoutes.homeRoute);
+//             }
+
 //             break;
 //           }
 //         }
@@ -60,18 +80,22 @@
 //               crossAxisAlignment: CrossAxisAlignment.center,
 //               children: [
 //                 Image.asset(
-//                   "assets/images/login_image.png",
+//                   "assets/images/login_img.png",
 //                   width: 500,
 //                 ),
-//                 // ignore_for_file: prefer_const_constructors
 //                 SizedBox(
 //                   height: 20.0,
 //                 ),
-//                 Text("Welcome",
+//                 Center(
+//                   child: Text(
+//                     "Welcome\nTo\nDEL TUCKSHOP",
 //                     style: TextStyle(
 //                       fontSize: 24,
 //                       fontWeight: FontWeight.bold,
-//                     )),
+//                     ),
+//                     textAlign: TextAlign.center,
+//                   ),
+//                 ),
 //                 SizedBox(
 //                   height: 26,
 //                 ),
@@ -89,7 +113,7 @@
 //                             _userName = value;
 //                           },
 //                           decoration: InputDecoration(
-//                             prefixIcon: Icon(Icons.person),
+//                               prefixIcon: Icon(Icons.person),
 //                               hintText: "Enter your username",
 //                               label: Text("Username:")),
 //                           validator: (value) {
@@ -162,8 +186,8 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tuckshopmanager/utils/data.dart';
 import 'package:tuckshopmanager/utils/firestore_keys.dart';
 import 'package:tuckshopmanager/utils/routes.dart';
@@ -183,49 +207,62 @@ class _LoginPageState extends State<LoginPage> {
   final _firestore = Firestore(SavedData.projectId);
   String _userName = "";
   String _userPass = "";
-  bool _isMounted = false;
 
   @override
   void initState() {
     super.initState();
-    _isMounted = true;
   }
 
   @override
   void dispose() {
-    _isMounted = false;
     super.dispose();
   }
 
   moveToHome(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       var map = await Firestore.instance.collection("users").get();
+      bool userFound = false;
       if (map.isEmpty) {
         print("not found");
       } else {
         for (var element in map) {
           if (element[DataKey.userName] == _userName &&
               element[DataKey.password] == _userPass) {
+            userFound = true;
             SavedData.name = element[DataKey.name];
             SavedData.admin = element[DataKey.admin] == "true";
             SavedData.email = element[DataKey.email];
             SavedData.userId = element[DataKey.userId];
             SavedData.documentId = element.id;
-            if (_isMounted) {
+
+            if (mounted) {
               setState(() {
                 _changeButton = true;
               });
             }
+
             await Future.delayed(Duration(seconds: 1));
-            if (_isMounted) {
-               setState(() {
+
+            if (mounted) {
+              setState(() {
                 _changeButton = false;
               });
-              await Navigator.pushReplacementNamed(context, MyRoutes.homeRoute);
-             
             }
+            if (mounted) {
+              await Navigator.pushReplacementNamed(context, MyRoutes.homeRoute);
+            }
+
             break;
           }
+        }
+        if (!userFound) {
+          Fluttertoast.showToast(
+            msg: "Invalid Username or Password",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+          );
         }
       }
     }
@@ -243,22 +280,28 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/login_image.png",
+                  "assets/images/login_img.png",
                   width: 500,
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
-                Text("Welcome",
+                Center(
+                  child: Text(
+                    "Welcome\nTo\nDEL TUCKSHOP",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 SizedBox(
                   height: 26,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
                   child: Column(
                     children: [
                       SizedBox(
@@ -270,9 +313,9 @@ class _LoginPageState extends State<LoginPage> {
                             _userName = value;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
-                            hintText: "Enter your username",
-                            label: Text("Username:")),
+                              prefixIcon: Icon(Icons.person),
+                              hintText: "Enter your username",
+                              label: Text("Username:")),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Can't be empty";
@@ -290,7 +333,7 @@ class _LoginPageState extends State<LoginPage> {
                             _userPass = value;
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.lock),
                             hintText: "Enter your password",
                             label: Text("Password"),
@@ -303,7 +346,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Material(
@@ -319,11 +362,11 @@ class _LoginPageState extends State<LoginPage> {
                             width: _changeButton ? 50 : 150,
                             alignment: Alignment.center,
                             child: _changeButton
-                                ? Icon(
+                                ? const Icon(
                                     Icons.done,
                                     color: Colors.white,
                                   )
-                                : Text(
+                                : const Text(
                                     "Login",
                                     style: TextStyle(
                                         color: Colors.white,
@@ -342,4 +385,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
